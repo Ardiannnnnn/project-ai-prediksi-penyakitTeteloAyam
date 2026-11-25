@@ -1,0 +1,63 @@
+/* Krem menyerupai lembar pemeriksaan. Hijau menandai tindakan dan hasil.
+   Serif membedakan judul dari teks formulir. Garis membatasi setiap pengamatan. */
+:root {
+  color-scheme: light;
+  --background: #f6f1e6;
+  --paper: #fffaf1;
+  --ink: #202b23;
+  --green: #234939;
+  --muted: #4b5b50;
+  --line: #8e9b8e;
+  --wash: #e4ebdf;
+  font: 100%/1.55 system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--background);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+.wrap { width: min(70rem, calc(100% - 2rem)); margin-inline: auto; }
+.masthead { background: var(--green); color: white; }
+.head-inner, nav, .actions, .options { display: flex; align-items: center; gap: .75rem; }
+.head-inner { justify-content: space-between; flex-wrap: wrap; }
+nav a, .brand { color: inherit; display: inline-flex; min-height: 44px; align-items: center; }
+.brand { font-weight: 750; text-decoration: none; }
+a[href], button, summary, label[for], input[type=radio] { cursor: pointer; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+a:hover { text-decoration: underline; text-underline-offset: .2em; }
+a:active { text-decoration-thickness: .2em; }
+.intro { max-width: 38rem; padding-block: clamp(2.25rem, 7vw, 5rem) 2rem; }
+.context { color: var(--green); font-weight: 700; margin: 0; }
+h1, h2 { font-family: Georgia, serif; line-height: 1.13; }
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); letter-spacing: -.04em; margin: .2em 0; }
+h2 { font-size: 1.55rem; margin: 0 0 1rem; }
+p { margin: .65rem 0; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: clamp(1rem, 4vw, 3.5rem); }
+#pemeriksaan, aside { min-width: 0; }
+#pemeriksaan { border-top: 3px solid var(--green); padding-top: 1.2rem; }
+fieldset { min-inline-size: 0; margin: 0; border: 0; border-bottom: 1px solid var(--line); padding: .35rem 0 .8rem; }
+fieldset + fieldset { margin-top: .7rem; }
+legend { padding: 0; font-weight: 650; }
+.code { color: var(--muted); margin-inline-end: .4rem; font-variant-numeric: tabular-nums; }
+.options { flex-wrap: wrap; }
+.options label { min-height: 44px; display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem; border: 1px solid var(--line); border-radius: .25rem; }
+.options label:hover { border-color: var(--green); text-decoration: underline; }
+.options label:active { transform: translateY(1px); }
+.options label:has(:checked) { background: var(--wash); border-color: var(--green); font-weight: 700; }
+input[type=radio] { accent-color: var(--green); margin: 0; inline-size: 1rem; block-size: 1rem; }
+fieldset:disabled label, input[type=radio]:disabled { cursor: not-allowed; }
+fieldset:disabled .options label { border-style: dashed; }
+.actions { flex-wrap: wrap; margin-top: 1.25rem; }
+button { min-height: 44px; border: 1px solid var(--green); border-radius: .25rem; background: var(--green); color: white; font: inherit; font-weight: 700; padding: .5rem 1rem; }
+button.secondary { background: transparent; color: var(--green); }
+button:hover, summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+button:active, summary:active { transform: translateY(1px); }
+button:focus-visible { outline-color: var(--green); }
+button:disabled { cursor: not-allowed; opacity: .75; border-style: dashed; }
+.paper { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--green); padding: clamp(1rem, 3vw, 1.7rem); }
+.method { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.2rem; }
+.score { display: block; font: 700 2.5rem/1.2 Georgia, serif; color: var(--green); }
+summary { min-height: 44px; padding-block: .55rem; font-weight: 650; }
+details ul { padding-inline-start: 1.2rem; }
+footer.wrap { border-top: 1px solid var(--line); padding-block: 1rem; margin-top: 3rem; color: var(--muted); }
+@media (max-width: 45rem) { .layout { grid-template-columns: 1fr; } }

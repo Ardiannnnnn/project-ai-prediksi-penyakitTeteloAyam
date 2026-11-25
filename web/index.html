@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skrining Tetelo pada Ayam</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap head-inner">
+      <a href="/" class="brand">Skrining Tetelo</a>
+      <nav aria-label="Navigasi utama"><a href="#pemeriksaan">Pemeriksaan</a><a href="#metode">Metode</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="intro">
+      <p class="context">Lembar pengamatan ayam</p>
+      <h1>Skrining Tetelo<br>pada Ayam</h1>
+      <p>Jawab berdasarkan gejala yang kamu amati. Sistem akan menunjukkan pola gejala dan aturan yang mendukungnya.</p>
+    </div>
+    <div class="layout">
+      <section id="pemeriksaan" aria-labelledby="judul-pemeriksaan">
+        <h2 id="judul-pemeriksaan">Pemeriksaan gejala</h2>
+        <form id="form" hidden>
+          <div id="soal"></div>
+          <div class="actions">
+            <button type="submit">Lihat hasil</button>
+            <button type="button" id="hapus-jawaban" class="secondary">Hapus jawaban</button>
+          </div>
+        </form>
+        <p id="status" role="status">Memuat daftar gejala…</p>
+        <button id="retry" type="button" class="secondary" hidden>Muat ulang gejala</button>
+      </section>
+      <aside aria-label="Ringkasan pemeriksaan">
+        <section id="hasil" class="paper" aria-labelledby="judul-hasil">
+          <h2 id="judul-hasil" tabindex="-1">Hasil skrining</h2>
+          <div id="ringkasan"><p>Hasil akan muncul setelah semua gejala dijawab.</p></div>
+        </section>
+        <section id="metode" class="method">
+          <h2>Cara kerja</h2>
+          <p>Backward Chaining menelusuri aturan dari kategori ke gejala yang menjadi syaratnya. Aturan yang terpenuhi digabung per kategori menggunakan Certainty Factor (CF).</p>
+          <p>CF adalah skor dukungan terhadap pola gejala dalam model. Pemeriksaan dokter hewan diperlukan untuk menilai kondisi ayam.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer class="wrap">Tugas 2 · MMAI1001 Kecerdasan Artificial</footer>
+</body>
+</html>
