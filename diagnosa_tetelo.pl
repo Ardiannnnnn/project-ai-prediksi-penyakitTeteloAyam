@@ -2,7 +2,7 @@
 :- encoding(utf8).
 :- use_module(library(readutil)).
 :- use_module(library(pairs)).
-:- dynamic jawaban/2.
+:- thread_local jawaban/2.
 
 gejala(g1, gejala("Ayam tampak lesu?", 0.20)).
 gejala(g2, gejala("Nafsu makan berkurang?", 0.20)).
@@ -78,10 +78,13 @@ jawaban_input("y.", ya).
 jawaban_input("t.", tidak).
 
 diagnosa :-
+    hasil_diagnosa(Terpilih),
+    cetak_hasil(Terpilih).
+
+hasil_diagnosa(Terpilih) :-
     findall(hasil(Kategori, CF, Aturan),
             skor_kategori(Kategori, CF, Aturan), Hasil),
-    pilih_kategori(Hasil, Terpilih),
-    cetak_hasil(Terpilih).
+    pilih_kategori(Hasil, Terpilih).
 
 skor_kategori(Kategori, CF, Aturan) :-
     prioritas(Kategori),
