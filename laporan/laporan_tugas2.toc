@@ -1,0 +1,44 @@
+\babel@toc {indonesian}{}\relax 
+\contentsline {chapter}{\numberline {1}Pendahuluan}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Latar Belakang Masalah}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Tujuan Proyek}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Batasan Proyek}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Metodologi Proyek}{3}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Kajian Pustaka dan Basis Pengetahuan}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Tinjauan Sistem Pakar}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tinjauan Penyakit Tetelo (\textit {Newcastle Disease})}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Akuisisi dan Representasi Pengetahuan}{5}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Sumber Pengetahuan}{5}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Basis Fakta (\texttt {gejala/2}, \texttt {diagnosis/2}, dan \texttt {saran/2})}{6}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Basis Aturan (\texttt {menyebabkan/2})}{7}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Perancangan dan Implementasi Sistem}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Arsitektur Sistem}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Implementasi Mesin Inferensi (Prolog)}{10}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Peran Backward Chaining dan Perhitungan Certainty Factor}{10}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Predikat Kunci}{10}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Mekanisme Backtracking dalam Penelusuran Aturan}{11}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Desain Antarmuka Pengguna}{12}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Antarmuka Konsol (SWI-Prolog)}{12}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Antarmuka Web Lokal (Pengembangan Tambahan)}{13}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Pengujian dan Hasil}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Metode Pengujian}{14}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Skenario Uji Kasus}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Analisis Hasil}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Walkthrough Perhitungan Certainty Factor}{15}{subsection.4.3.1}%
+\contentsline {paragraph}{Kasus U1 (\texttt {G1, G2, G3} = Ya).}{15}{paragraph*.10}%
+\contentsline {paragraph}{Kasus U7 (\texttt {G4, G8, G11, G12} = Ya).}{16}{paragraph*.11}%
+\contentsline {subsection}{\numberline {4.3.2}Pengaruh Bobot CF terhadap Kesimpulan dan Temuan Evaluasi}{16}{subsection.4.3.2}%
+\contentsline {chapter}{\numberline {5}Kesimpulan dan Saran}{18}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{18}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran Pengembangan Lebih Lanjut}{18}{section.5.2}%
+\contentsline {chapter}{Daftar Pustaka}{20}{chapter*.12}%
+\contentsline {chapter}{\numberline {A}Kode Sumber Lengkap (Prolog)}{21}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Kode Inti dan Antarmuka Konsol (\texttt {diagnosa\_tetelo.pl})}{21}{appendix.A.1}%
+\contentsline {section}{\numberline {A.2}Kode Server Web Lokal (\texttt {web/server.pl})}{24}{appendix.A.2}%
+\contentsline {chapter}{\numberline {B}Panduan Penggunaan}{27}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Prasyarat}{27}{appendix.B.1}%
+\contentsline {section}{\numberline {B.2}Menjalankan Antarmuka Konsol Prolog}{27}{appendix.B.2}%
+\contentsline {section}{\numberline {B.3}Menjalankan Antarmuka Web Lokal}{28}{appendix.B.3}%
+\contentsline {chapter}{\numberline {C}Tangkapan Layar Antarmuka Sistem}{29}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Antarmuka Konsol SWI-Prolog}{29}{appendix.C.1}%
+\contentsline {section}{\numberline {C.2}Antarmuka Web Lokal}{29}{appendix.C.2}%

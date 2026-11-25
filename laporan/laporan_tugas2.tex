@@ -1,13 +1,16 @@
 \documentclass[12pt,a4paper]{report}
 
-% Bahasa & font (XeTeX / Tectonic)
-\usepackage{lmodern}
+% Bahasa & font (XeTeX)
 \usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Consolas}
 \usepackage[indonesian]{babel}
 \addto\captionsindonesian{\renewcommand{\bibname}{Daftar Pustaka}}
 
 % Tata letak halaman
 \usepackage[top=3cm,bottom=3cm,left=3.5cm,right=2.5cm]{geometry}
+\setlength{\headheight}{15pt}
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{parskip}
@@ -35,35 +38,34 @@
 % Hyperref (muat paling akhir)
 \usepackage[hidelinks,unicode]{hyperref}
 
-% Warna aksen akademis
-\definecolor{PrimaryGreen}{HTML}{1F4E3D}
-\definecolor{SoftGreen}{HTML}{EEF4F0}
-\definecolor{MutedGray}{HTML}{555E58}
-\definecolor{TermBg}{HTML}{1E2320}
-\definecolor{TermFg}{HTML}{E6ECE8}
-\definecolor{CodeBg}{HTML}{F8F9F7}
-\definecolor{CodeBorder}{HTML}{CFD7D1}
+% Warna netral akademis
+\definecolor{MutedGray}{HTML}{555555}
+\definecolor{CodeBg}{HTML}{F8F8F8}
+\definecolor{CodeBorder}{HTML}{CCCCCC}
+\definecolor{CodeKw}{HTML}{000099}
+\definecolor{CodeStr}{HTML}{A31515}
 
 % Format judul bab
 \titleformat{\chapter}[display]
-  {\normalfont\bfseries\color{PrimaryGreen}\centering}
-  {\large\MakeUppercase{\chaptertitlename} \thechapter}
-  {6pt}
-  {\Large\MakeUppercase}
-\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
+  {\normalfont\bfseries}
+  {\large\chaptertitlename\ \thechapter}
+  {4pt}
+  {\Large}
+\titlespacing*{\chapter}{0pt}{-10pt}{18pt}
 
 \titleformat{\section}
-  {\normalfont\large\bfseries\color{PrimaryGreen}}
+  {\normalfont\large\bfseries}
   {\thesection}{0.8em}{}
 \titleformat{\subsection}
-  {\normalfont\normalsize\bfseries\color{PrimaryGreen!85!black}}
+  {\normalfont\normalsize\bfseries}
   {\thesubsection}{0.8em}{}
 
 % Header dan footer
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{MutedGray}Laporan Proyek Akhir --- MMAI1001 Kecerdasan Artifisial}
-\fancyhead[R]{\small\color{MutedGray}\thepage}
+\fancyhead[L]{\small Tugas 2 --- Kecerdasan Artifisial}
+\fancyhead[R]{\small Kelompok 5}
+\fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{
   \fancyhf{}
@@ -86,9 +88,9 @@
 \lstset{
   language=PrologCustom,
   basicstyle=\ttfamily\footnotesize,
-  keywordstyle=\bfseries\color{PrimaryGreen},
+  keywordstyle=\bfseries\color{CodeKw},
   commentstyle=\itshape\color{MutedGray},
-  stringstyle=\color{teal!70!black},
+  stringstyle=\color{CodeStr},
   numbers=left,
   numberstyle=\tiny\color{MutedGray},
   stepnumber=1,
@@ -106,14 +108,15 @@
 
 % Kotak terminal untuk transkrip konsol
 \newtcolorbox{consolebox}[1][]{
-  colback=TermBg,
-  colframe=PrimaryGreen,
-  colupper=TermFg,
-  coltitle=white,
-  fonttitle=\bfseries\small\sffamily,
+  colback=CodeBg,
+  colframe=CodeBorder,
+  colupper=black,
+  coltitle=black,
+  colbacktitle=gray!15,
+  fonttitle=\bfseries\small,
   fontupper=\scriptsize,
-  arc=3pt,
-  boxrule=0.8pt,
+  arc=2pt,
+  boxrule=0.6pt,
   left=8pt,right=8pt,top=5pt,bottom=5pt,
   breakable,
   title=#1
@@ -129,44 +132,41 @@
 % HALAMAN SAMPUL
 % ============================================================================
 \begin{titlepage}
-\centering
+\begin{center}
 \vspace*{0.8cm}
 
-{\large\bfseries\color{PrimaryGreen} LAPORAN PROYEK AKHIR}\\[0.3cm]
-{\normalsize TUGAS/PROYEK 2 --- MATA KULIAH MMAI1001 KECERDASAN ARTIFISIAL}\\[1.5cm]
+{\fontsize{17}{22}\selectfont\bfseries SISTEM PAKAR DIAGNOSA DINI\\PENYAKIT TETELO (\textit{NEWCASTLE DISEASE})\\PADA AYAM BERBASIS PROLOG\par}
+\vspace{0.45cm}
+{\fontsize{14}{19}\selectfont\bfseries LAPORAN TUGAS 2\par}
 
-\rule{\textwidth}{1.5pt}\\[0.5cm]
-{\LARGE\bfseries Sistem Pakar Diagnosa Dini Penyakit Tetelo (\textit{Newcastle Disease}) pada Ayam Berbasis Prolog}\\[0.4cm]
-{\normalsize\itshape Menggunakan Metode Backward Chaining dan Certainty Factor}\\[0.3cm]
-\rule{\textwidth}{1.5pt}\\[2cm]
+\vspace{1.6cm}
 
-% Ilustrasi emblem/diagram mini di sampul
-\begin{tikzpicture}[scale=0.9]
-  \node[draw=PrimaryGreen, fill=SoftGreen, rounded corners=6pt, thick,
-        minimum width=9.5cm, minimum height=1.8cm, align=center] {
-    \textbf{\color{PrimaryGreen}Basis Pengetahuan (12 Gejala, 15 Aturan IF--THEN)}\\
-    \small SWI-Prolog $\cdot$ Backward Chaining $\cdot$ Certainty Factor $\cdot$ Antarmuka Konsol \& Web Lokal
-  };
-\end{tikzpicture}
+{\fontsize{12}{16}\selectfont Disusun oleh:\par}
+\vspace{0.2cm}
+{\fontsize{13}{17}\selectfont\bfseries Kelompok 5\par}
+\vspace{0.5cm}
 
-\vfill
-
-\begin{minipage}{0.8\textwidth}
-\centering
-\textbf{Disusun Oleh Kelompok:}\\[0.4cm]
-\begin{tabular}{ll}
-1. \underline{\hspace{5.5cm}} & (NIM: \underline{\hspace{2.8cm}}) \\[0.25cm]
-2. \underline{\hspace{5.5cm}} & (NIM: \underline{\hspace{2.8cm}}) \\[0.25cm]
-3. \underline{\hspace{5.5cm}} & (NIM: \underline{\hspace{2.8cm}}) \\[0.25cm]
-\end{tabular}
-\end{minipage}
+{\fontsize{12}{15}\selectfont
+\textbf{ARDIAN}\\
+NPM. 260820701100008\\[0.3cm]
+\textbf{MUHAMMAD ICHSAN}\\
+NPM. 260820701100007\\[0.3cm]
+\textbf{IRFAN SYAHPUTRA}\\
+NPM. 2308107010030\par}
 
 \vfill
 
-{\bfseries PROGRAM STUDI MAGISTER / SARJANA INFORMATIKA}\\
-{\normalsize MATA KULIAH KECERDASAN ARTIFISIAL (MMAI1001)}\\
-{\normalsize NOVEMBER 2026}
+\includegraphics[width=3.8cm]{images/unsyiah.png}
 
+\vfill
+
+{\fontsize{12}{16}\selectfont\bfseries
+PROGRAM STUDI KECERDASAN BUATAN DEPARTEMEN INFORMATIKA\\
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM\\
+UNIVERSITAS SYIAH KUALA\\
+2026\par}
+
+\end{center}
 \end{titlepage}
 
 % ============================================================================
@@ -203,7 +203,7 @@ Tujuan utama proyek ini adalah:
 \end{enumerate}
 
 \section{Batasan Proyek}
-Agar ruang lingkup proyek tetap terukur dan jujur secara ilmiah, diterapkan beberapa batasan berikut:
+Agar ruang lingkup pengerjaan tetap terarah, ditetapkan beberapa batasan berikut:
 \begin{enumerate}
   \item Sistem difokuskan khusus untuk \textbf{skrining dini penyakit Tetelo (\textit{Newcastle Disease}) pada ayam} dan tidak mencakup diagnosis banding penyakit unggas lain (seperti Flu Burung, Snot, atau Gumboro).
   \item Kategori keluaran \texttt{D1}--\texttt{D3} merepresentasikan \textbf{pola aturan proyek} (umum; pernapasan/pencernaan/produksi; saraf/gangguan gerak), bukan stadium klinis tervalidasi atau konfirmasi diagnostik medis. Kategori \texttt{D4} menandakan jawaban belum memenuhi satu pun pola aturan.
@@ -213,7 +213,7 @@ Agar ruang lingkup proyek tetap terukur dan jujur secara ilmiah, diterapkan bebe
 \end{enumerate}
 
 \section{Metodologi Proyek}
-Pengerjaan proyek dilaksanakan melalui empat fase terstruktur:
+Tahapan pengerjaan proyek ini meliputi empat langkah utama:
 \begin{enumerate}
   \item \textbf{Akuisisi Pengetahuan}: Studi literatur dari dua jurnal sistem pakar penyakit ayam~\cite{azzahra2026,ahsyar2021} untuk memetakan gejala klinis Tetelo, mengadopsi bobot CF yang tersedia, dan menyusun spesifikasi kebutuhan dalam \textit{Product Requirements Document} (PRD).
   \item \textbf{Pemodelan Basis Pengetahuan dan Inferensi}: Menetapkan 12 gejala (\texttt{G1}--\texttt{G12}), 4 kategori keluaran (\texttt{D1}--\texttt{D4}), 15 aturan \texttt{IF--THEN} (\texttt{R1}--\texttt{R15}), rumus CF per aturan, kombinasi CF per kategori, serta aturan \textit{tie-breaker}.
@@ -359,14 +359,14 @@ Sistem pakar dirancang dengan arsitektur modular sehingga satu inti logika Prolo
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  box/.style={draw=PrimaryGreen, fill=SoftGreen, rounded corners=4pt, thick,
+  box/.style={draw=black!80, fill=gray!8, rounded corners=3pt, thick,
               text width=4.4cm, align=center, inner sep=6pt, font=\footnotesize},
-  core/.style={draw=PrimaryGreen, fill=white, rounded corners=4pt, thick,
+  core/.style={draw=black!85, fill=white, rounded corners=3pt, thick,
                text width=5.4cm, align=center, inner sep=7pt, font=\footnotesize},
-  user/.style={draw=PrimaryGreen!80!black, fill=PrimaryGreen, text=white,
-               rounded corners=4pt, thick, minimum width=4.2cm, align=center,
+  user/.style={draw=black!85, fill=gray!20, text=black,
+               rounded corners=3pt, thick, minimum width=4.2cm, align=center,
                inner sep=6pt, font=\small\bfseries},
-  arr/.style={-{Stealth[length=2.4mm]}, thick, color=PrimaryGreen}
+  arr/.style={-{Stealth[length=2.4mm]}, thick, color=black!80}
 ]
 
   % Baris 1: Pengguna
