@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pakar Tetelo — Diagnosis Dini Penyakit Tetelo pada Ayam</title>
+  <meta name="description" content="Sistem pakar diagnosis dini penyakit Tetelo pada ayam dengan Backward Chaining dan Certainty Factor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2316a34a'/%3E%3Ccircle cx='16' cy='13' r='6' fill='%23fff'/%3E%3Cpath d='M22 13l6 2-6 2z' fill='%23fbbf24'/%3E%3Ccircle cx='18' cy='12' r='1.6' fill='%2314231c'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="latar" aria-hidden="true">
+    <span class="gelembung g1"></span>
+    <span class="gelembung g2"></span>
+    <span class="gelembung g3"></span>
+    <span class="gelembung g4"></span>
+  </div>
+  <canvas id="konfeti" aria-hidden="true"></canvas>
+
+  <header class="muka">
+    <div class="muka-dalam">
+      <div class="merek">
+        <span class="ikon-merek" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30">
+            <circle cx="16" cy="16" r="15" fill="url(#gradMerek)" />
+            <circle cx="15" cy="13" r="6" fill="#fff" />
+            <path d="M21 13l6 2-6 2z" fill="#fbbf24" />
+            <path d="M13 7c1-3 4-3 4-1 2-2 5 0 4 3" fill="#f43f5e" />
+            <circle cx="17" cy="12" r="1.5" fill="#14231c" />
+            <defs>
+              <linearGradient id="gradMerek" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#16a34a" />
+                <stop offset="1" stop-color="#84cc16" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="teks-merek">
+          <strong>Pakar Tetelo</strong>
+          <small>Sistem Pakar Ayam · CF + Backward Chaining</small>
+        </span>
+      </div>
+
+      <nav class="tab" role="tablist" aria-label="Navigasi utama">
+        <button class="tab-tombol aktif" type="button" role="tab" aria-selected="true" data-tab="konsultasi">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Konsultasi</span>
+        </button>
+        <button class="tab-tombol" type="button" role="tab" aria-selected="false" data-tab="basis">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Basis Pengetahuan</span>
+        </button>
+        <button class="tab-tombol" type="button" role="tab" aria-selected="false" data-tab="riwayat">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Riwayat</span>
+          <span class="lencana" id="jumlah-riwayat" hidden>0</span>
+        </button>
+        <span class="tab-indikator" aria-hidden="true"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="utama">
+    <section id="panel-konsultasi" class="panel aktif" role="tabpanel">
+      <div id="alur"></div>
+    </section>
+
+    <section id="panel-basis" class="panel" role="tabpanel" hidden>
+      <div class="judul-panel masuk">
+        <span class="pill">Basis Pengetahuan</span>
+        <h2>12 gejala, 15 aturan, mesin Certainty Factor</h2>
+        <p>Port data dari <code>diagnosa_tetelo.pl</code> sesuai PRD Tugas 2 MMAI1001. Bobot gejala dan aturan mengikuti spesifikasi proyek.</p>
+      </div>
+
+      <div class="kartu masuk" style="--delay: .05s">
+        <div class="kartu-judul">
+          <h3>Gejala &amp; bobot CF</h3>
+          <span class="tag">12 gejala</span>
+        </div>
+        <div class="bungkus-tabel">
+          <table class="tabel">
+            <thead>
+              <tr><th>ID</th><th>Pertanyaan</th><th class="kanan">CF</th><th>Dasar bobot</th></tr>
+            </thead>
+            <tbody id="tabel-gejala"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="kartu masuk" style="--delay: .1s">
+        <div class="kartu-judul">
+          <h3>Aturan IF–THEN</h3>
+          <span class="tag">15 aturan</span>
+        </div>
+        <div class="bungkus-tabel">
+          <table class="tabel">
+            <thead>
+              <tr><th>Aturan</th><th>Premis (semua Ya)</th><th>Kesimpulan</th><th class="kanan">Bobot</th></tr>
+            </thead>
+            <tbody id="tabel-aturan"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-formula">
+        <div class="kartu rumus masuk" style="--delay: .15s">
+          <span class="rumus-label">CF per aturan</span>
+          <code>min(CF gejala) × bobot aturan</code>
+          <p>Premis AND dinilai dari CF terkecil pada gejala yang dijawab Ya.</p>
+        </div>
+        <div class="kartu rumus masuk" style="--delay: .2s">
+          <span class="rumus-label">Gabung dalam kategori</span>
+          <code>CF = akum + CFaturan × (1 − akum)</code>
+          <p>Operasi kombinasi positif, dimulai dari 0 untuk tiap kategori.</p>
+        </div>
+        <div class="kartu rumus masuk" style="--delay: .25s">
+          <span class="rumus-label">Pemilihan pemenang</span>
+          <code>CF tertinggi · seri → D3 &gt; D2 &gt; D1</code>
+          <p>Toleransi seri 0,000001 pada skala 0–1. Tidak ada aturan → D4.</p>
+        </div>
+      </div>
+
+      <div class="kartu masuk" style="--delay: .3s">
+        <div class="kartu-judul">
+          <h3>Pengujian black-box (PRD §5)</h3>
+          <span class="tag tag-emas">U1–U7 + uji seri</span>
+        </div>
+        <p class="teks-lembut">Jalankan seluruh kasus uji terhadap mesin inferensi web dan bandingkan dengan hasil yang diharapkan spesifikasi.</p>
+        <div class="aksi-uji">
+          <button class="tombol tombol-primer" type="button" id="tombol-uji">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Jalankan Pengujian
+          </button>
+          <span class="ringkasan-uji" id="ringkasan-uji"></span>
+        </div>
+        <div class="bungkus-tabel" id="hasil-uji" hidden>
+          <table class="tabel tabel-uji">
+            <thead>
+              <tr><th>Kasus</th><th>Keterangan</th><th>Harapan</th><th>Aktual</th><th>Status</th></tr>
+            </thead>
+            <tbody id="tabel-uji"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-riwayat" class="panel" role="tabpanel" hidden>
+      <div class="judul-panel masuk">
+        <span class="pill">Riwayat</span>
+        <h2>Konsultasi tersimpan di perangkat ini</h2>
+        <p>Tersimpan lokal lewat <code>localStorage</code> — tidak dikirim ke mana pun.</p>
+        <button class="tombol tombol-merah" type="button" id="hapus-semua" hidden>Hapus semua</button>
+      </div>
+      <div id="daftar-riwayat"></div>
+    </section>
+  </main>
+
+  <footer class="kaki">
+    <p><strong>Pakar Tetelo</strong> — sistem pakar screening, <em>bukan</em> pengganti diagnosis dokter hewan.</p>
+    <p>Port web dari <code>diagnosa_tetelo.pl</code> · PRD Tugas 2 MMAI1001 Kecerdasan Artificial</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="engine.js"></script>
+  <script src="tests.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
