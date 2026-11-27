@@ -486,7 +486,7 @@ Selain konsol, repositori juga menyediakan antarmuka web lokal di direktori \tex
   \item Pengguna memilih \textit{Ya} atau \textit{Tidak} pada setiap gejala melalui formulir HTML (\texttt{index.html}, \texttt{style.css}, \texttt{app.js}), lalu menekan \textbf{Lihat hasil}.
   \item \texttt{POST /api/diagnosa} memvalidasi ukuran payload ($\le 4096$ byte) serta kelengkapan seluruh 12 jawaban, memanggil predikat inti \texttt{hasil\_diagnosa/1} dan \texttt{skor\_aturan/3} dari \texttt{diagnosa\_tetelo.pl}, lalu mengembalikan hasil diagnosis beserta rincian tiap aturan (\texttt{minimum}, \texttt{bobot}, dan \texttt{skor}) untuk ditampilkan pada panel \textit{Lihat perhitungan aturan}.
 \end{itemize}
-Tangkapan layar aktual antarmuka konsol SWI-Prolog dan antarmuka web lokal dilampirkan pada Lampiran~\ref{app:tangkapan_layar} (Gambar~\ref{fig:konsol} dan Gambar~\ref{fig:web}).
+Tangkapan layar aktual antarmuka konsol SWI-Prolog dan antarmuka web lokal dilampirkan pada Lampiran~\ref{app:tangkapan_layar} (Gambar~\ref{fig:konsol} dan Gambar~\ref{fig:web}), sedangkan pemaparan dan demonstrasi lengkap sistem dapat disaksikan pada video presentasi di Lampiran~\ref{app:video_presentasi} (\url{https://youtu.be/QVkXwtILqv8}).
 
 % ============================================================================
 % BAB IV: PENGUJIAN DAN HASIL
@@ -694,5 +694,22 @@ Gambar~\ref{fig:web} memperlihatkan tampilan antarmuka web lokal yang dilayani o
 \caption{Tangkapan layar antarmuka web lokal (\texttt{web/server.pl})}
 \label{fig:web}
 \end{figure}
+
+\chapter{Video Presentasi}
+\label{app:video_presentasi}
+
+Video presentasi proyek ini memuat pemaparan latar belakang masalah, rancangan basis pengetahuan dan mesin inferensi Prolog (\textit{Backward Chaining} dan \textit{Certainty Factor}), serta demonstrasi langsung penggunaan antarmuka konsol SWI-Prolog maupun antarmuka web lokal.
+
+\begin{tcolorbox}[
+  colback=CodeBg,
+  colframe=CodeBorder,
+  colupper=black,
+  arc=2pt,
+  boxrule=0.6pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt
+]
+\textbf{Video Presentasi (YouTube):}\\[4pt]
+\url{https://youtu.be/QVkXwtILqv8}
+\end{tcolorbox}
 
 \end{document}

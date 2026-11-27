@@ -42,3 +42,4 @@
 \contentsline {chapter}{\numberline {C}Tangkapan Layar Antarmuka Sistem}{29}{appendix.C}%
 \contentsline {section}{\numberline {C.1}Antarmuka Konsol SWI-Prolog}{29}{appendix.C.1}%
 \contentsline {section}{\numberline {C.2}Antarmuka Web Lokal}{29}{appendix.C.2}%
+\contentsline {chapter}{\numberline {D}Video Presentasi}{31}{appendix.D}%

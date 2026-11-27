@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.31)  25 NOV 2026 23:31
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.31)  27 NOV 2026 21:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1265,21 +1265,25 @@ File: images/web.png Graphic file (type bmp)
 <images/web.png>
 [29
 
-] [30] (./laporan_tugas2.aux)
+] [30]
+Lampiran D.
+[31
+
+] (./laporan_tugas2.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
  ***********
 Package rerunfilecheck Info: File `laporan_tugas2.out' has not changed.
-(rerunfilecheck)             Checksum: 5517D9EC6F433192C8379476329D2B29;8283.
+(rerunfilecheck)             Checksum: 6266D04A316E9F17A17C637B55642103;8411.
  ) 
 Here is how much of TeX's memory you used:
- 34469 strings out of 467745
- 742158 string characters out of 5425966
- 1567538 words of memory out of 5000000
- 63029 multiletter control sequences out of 15000+600000
+ 34473 strings out of 467745
+ 742257 string characters out of 5425966
+ 1567726 words of memory out of 5000000
+ 63033 multiletter control sequences out of 15000+600000
  635431 words of font info for 132 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  92i,13n,96p,1203b,1913s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on laporan_tugas2.pdf (35 pages).
+Output written on laporan_tugas2.pdf (36 pages).

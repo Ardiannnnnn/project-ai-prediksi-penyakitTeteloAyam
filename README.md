@@ -1,5 +1,16 @@
 # project-ai-prediksi-penyakitTeteloAyam
+### KELOMPOK 5
+### Ardian (260820701100008) | Muhammad Ichsan (260820701100007) | Irfan Syahputra (2308107010030)
 
+## Link Video Presentasi
+```sh
+https://youtu.be/QVkXwtILqv8
+```
+
+## Link Github Repo
+```sh
+https://github.com/Ardiannnnnn/project-ai-prediksi-penyakitTeteloAyam
+```
 ## Web lokal
 
 Jalankan dari folder proyek dengan SWI-Prolog terpasang.
